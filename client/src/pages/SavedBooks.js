@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import {
 	Jumbotron,
 	Container,
@@ -17,7 +17,7 @@ import { removeBookId } from '../utils/localStorage';
 const SavedBooks = () => {
 	// const [userData, setUserData] = useState({});
 	const { loading, data } = useQuery(GET_ME);
-	const [removeBook, { error }] = useMutation(DELETE_BOOK);
+	const [removeBook] = useMutation(DELETE_BOOK);
 	const userData = data?.me || {};
 
 	// use this to determine if `useEffect()` hook needs to run again
@@ -58,6 +58,8 @@ const SavedBooks = () => {
 
 		try {
 			// const response = await deleteBook(bookId, token);
+
+			// eslint-disable-next-line
 			const { data } = await removeBook({
 				variables: { bookId },
 			});
